@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Global Best HRMS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="divCenter">
+    <div class="ion-padding">
+      <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Code</mat-label>
+          <input type="text" formControlName="employeeCode" matInput placeholder="Employee Code">
+          <mat-icon matSuffix>person_outline</mat-icon>
+        </mat-form-field>      
+        
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="showPassword ? 'password' : 'text'" formControlName="password"
+            placeholder="Your password" style="width: 100%;">
+          <mat-icon (click)="onPasswordToggle()" *ngIf="showPassword" matSuffix>lock</mat-icon>
+          <mat-icon (click)="onPasswordToggle()" *ngIf="!showPassword" matSuffix>lock_open</mat-icon>
+          <!-- <mat-hint>Min 8 char 1 number and 1 alpha</mat-hint> -->
+        </mat-form-field>
+
+        <div>
+          <ion-button size="medium" expand="block" fill="outline" color="primary" type="submit"
+            [disabled]="!validationsForm.valid">Login
+          </ion-button>
+        </div>
+
+        <div class="ion-text-start">
+          <span *ngFor="let validation of errorMsg.validationMSG.employeeCode">
+            <mat-error  class="error-message"
+              *ngIf="validationsForm.get('employeeCode').hasError(validation.type) && (validationsForm.get('employeeCode').dirty || validationsForm.get('employeeCode').touched)">
+              <i class="fa fa-exclamation-triangle"></i>&nbsp;{{ validation.message }}
+            </mat-error>
+          </span>
+
+          <span *ngFor="let validation of errorMsg.validationMSG.password">
+            <mat-error class="error-message"
+              *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+              <i class="fa fa-exclamation-triangle"></i>&nbsp;{{ validation.message }}
+            </mat-error>
+          </span>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ion-content>

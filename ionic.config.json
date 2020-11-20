@@ -1,0 +1,7 @@
+{
+  "name": "globalbesthr",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

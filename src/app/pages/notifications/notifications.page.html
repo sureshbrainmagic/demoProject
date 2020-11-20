@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-padding" *ngFor="let n of notificationJSON">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="6"><b>Name : </b> {{n.Name}}</ion-col>
+        <ion-col size="6" class="text-right"><b>DOB : </b>{{n.DOB}}-{{getYear}}</ion-col>
+        <ion-col size="12"><b class="pt-2">Designation : </b>{{n.Designation}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

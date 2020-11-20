@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/editprofile">
+        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="myCard">
+    <div class="ion-text-center">
+      <div class="pt-2 pb-2">
+        <img src="../../../assets/noImg.png" class="rounded-circle" width="75px">
+      </div>
+      <ion-text color="light" size="large">{{lsEmpDetails.FirstName}} {{lsEmpDetails.LastName}}</ion-text>
+      <!-- <p class="text-light">Dot Net Developer</p> -->
+    </div>
+  </div>
+
+  <ion-segment value="Overview" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="Overview">
+      <ion-label>Overview</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Education">
+      <ion-label>Education</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Experience">
+      <ion-label>Experience</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'Overview'">
+      <ion-list>
+        <ion-item>
+          <ion-label>Employee Code</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.Code}}
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Phone</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.PersonalMobile}}
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.OfficialEmail}}
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Birthday</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.ActualDateOfBirth | date : 'dd MMM yyyy'}}
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Gender</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.Gender}}
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Bload Group</ion-label>
+          <div slot="end">
+            {{lsEmpDetails.BloodGroup}}
+          </div>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding">
+        <b>Address 1</b>
+        <p>{{lsEmpDetails.CAddress1}}</p>
+        <b>Address 2</b>
+        <p>{{lsEmpDetails.CAddress2}}</p>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'Education'">
+      <ion-list>
+        <ion-item>
+          <h6>Under development</h6>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'Experience'">
+      <ion-list>
+        <ion-item>
+          <h6>Under development</h6>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pay Slip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-2">
+    <div class="form-group">
+      <label>Finanical Year <span class="text-danger">*</span></label>
+      <ng-select [items]="financialYear" [(ngModel)]="ngFinancialYear"
+        [searchable]="true" #selectFinancialYear 
+        bindValue="Year"
+        bindLabel="Year" 
+
+        (close)="selectFinancialYear.blur(); selectFinancialYear.focus()" 
+        placeholder="Select Finanical Year" dropdownPosition="bottom">
+      </ng-select>
+    </div>
+
+    <div class="form-group">
+      <label>Select Month <span class="text-center">*</span></label>
+      <ng-select [items]="getMonth" [(ngModel)]="ngGetMonth" [searchable]="true" #selectMonth
+        (close)="selectMonth.blur(); selectMonth.focus()" placeholder="Select Month" dropdownPosition="bottom">
+      </ng-select>
+    </div>
+
+    <div class="form-group text-center">
+      <ion-button (click)="onSubmit()"  shape="round">
+        <ion-icon slot="start" name="download-outline"></ion-icon>
+        Download Pay Slip
+      </ion-button>
+    </div>
+
+  </div>
+  <!-- <ion-text color="primary">
+    Under Development
+  </ion-text> -->
+</ion-content>

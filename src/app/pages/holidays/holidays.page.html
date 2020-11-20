@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Holidays</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-1">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr style="background-color: #3349ff;">
+          <td class="text-center text-light">#</td>
+          <td class="text-center text-light">Holiday On</td>
+          <td class="text-center text-light">Date</td>
+        </tr>
+        <tr *ngFor="let h of holidayJSON; let i = index;">
+          <td class="text-center">{{i+1}}</td>
+          <td>{{h.HolidayName}}</td>
+          <td class="text-center">{{h.FromDate | date: 'dd MMM yyyy'}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</ion-content>

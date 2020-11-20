@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Leave Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-2">
+    <div class="form-group">
+      <label>Status <span class="text-danger">*</span></label>
+      <ng-select [items]="status" [(ngModel)]="ngStatus" [searchable]="true" #selectStatus bindValue="value"
+        bindLabel="type" (close)="selectStatus.blur(); selectStatus.focus()" placeholder="Select Status"
+        dropdownPosition="bottom">
+      </ng-select>
+      <div class="text-center">
+        <ion-button (click)="onSubmitFn()" shape="round">
+          Submit
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table-responsive" *ngIf="leaveStatusJSON.length > 0">
+    <table class="table table-striped">
+      <tr style="background-color: #3349ff;">
+        <td class="text-center cusFS12 text-light">#</td>
+        <td class="text-center cusFS12 text-light">Leave Type</td>
+        <td class="text-center cusFS12 text-light">Reason</td>
+        <td class="text-center cusFS12 text-light">Status</td>
+      </tr>
+      <tr *ngFor="let l of leaveStatusJSON; let i = index;">
+        <td class="text-center cusFS12">{{i+1}}</td>
+        <td class="cusFS12">{{leaveType(l.LeaveType)}}</td>
+        <td class="cusFS12">{{l.Reason}}</td>
+        <td class="text-center cusFS12">
+          <span [innerHTML]="statusFn(l.LeaveStatus)"></span>
+        </td>
+        <!-- <td class="text-center">{{l.HalfDay | date: 'dd MMM yyyy'}}</td> -->
+      </tr>
+    </table>
+  </div>
+
+
+</ion-content>

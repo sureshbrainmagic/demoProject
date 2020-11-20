@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button [disabled]="isCheckIn" color="success"
+          (click)="checkInOutAlertFn('checkIn', 'Are you sure, do you want to check-in')">
+          <ion-icon name="log-in-outline" size="large"></ion-icon>
+          <ion-text size="large">Check In</ion-text>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button [disabled]="isCheckOut" color="danger"
+          (click)="checkInOutAlertFn('checkOut', 'Are you sure, do you want to check-out')">
+          <ion-icon name="log-out-outline" size="large"></ion-icon>
+          <ion-text size="large">Check out</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="table-responsive p-1" *ngIf="attendanceJson.length > 0" >
+    <table class="table table-bordered">
+      <tr style="background-color: #3349ff;">
+        <th class="text-center text-light ion-text-nowrap">#</th>
+        <th class="text-center text-light ion-text-nowrap">Punch Date</th>
+        <th class="text-center text-light ion-text-nowrap">In</th>
+        <th class="text-center text-light ion-text-nowrap">Out</th>
+      </tr>
+      <tr *ngFor="let a of attendanceJson; let i = index">
+        <td class="text-center ion-text-nowrap ">{{i+1}}</td>
+        <td class="text-center ion-text-nowrap ">{{a.PunchDate | date: 'dd-MM-yyyy'}}</td>
+        <td class="text-center ion-text-nowrap ">{{a.Intime}}</td>
+        <td class="text-center ion-text-nowrap ">{{a.Outtime}}</td>
+      </tr>
+    </table>
+  </div>
+
+</ion-content>

@@ -1,0 +1,46 @@
+* {
+    outline: none;
+}
+.custom-modal {
+    --height: 50%;
+    --border-radius: 10px;
+    padding: 25px;
+} 
+
+.popoverClass {
+    --width: 200px;
+    // --min-width:100px;
+    // --background: blueviolet;    
+    // --min-height:90%;
+}
+
+.cusFS14  {
+    font-size: 14px;
+}
+.cusFS12 {
+    font-size: 12px;
+}
+
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+.divCenter {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

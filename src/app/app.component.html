@@ -1,0 +1,130 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="reveal">
+      <!-- <ion-menu side="start" menuId="custom" contentId="main-content" class="my-custom-menu"> -->
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>{{lsEmplDetails.FirstName}}</ion-list-header>
+          <ion-note>{{lsEmplDetails.OfficialEmail}}</ion-note>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/home" routerLinkActive="selected" lines="none" detail="true"
+              (click)="isRemainder = false">
+              <ion-icon slot="start" md="home-sharp"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item lines="none" (click)="isRemainder === 1 ? isRemainder = 0 : isRemainder = 1">
+            <ion-icon slot="start" name="people-outline"></ion-icon>
+            <ion-label>Employee</ion-label>
+            <ion-icon slot="end" color="primary"
+              [name]="isRemainder? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+          </ion-item>
+
+          <ion-menu-toggle auto-hide="false" [hidden]="!isRemainder">
+            <!-- <ion-item [routerLink]="'employee'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  All Employees
+                </ion-text>
+              </ion-label>
+            </ion-item> -->
+
+            <ion-item [routerLink]="'attendance'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Attendance
+                </ion-text>
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="'holidays'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Holidays
+                </ion-text>
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="'leaverequest'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Leave Request
+                </ion-text>
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="'leavestatus'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Leave Status
+                </ion-text>
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+          <ion-item lines="none" (click)="isPayRoll === 1 ? isPayRoll = 0 : isPayRoll = 1">
+            <ion-icon slot="start" name="cash-outline"></ion-icon>
+            <ion-label>Payroll</ion-label>
+            <ion-icon slot="end" color="primary" [name]="isPayRoll? 'chevron-down-outline' : 'chevron-forward-outline'">
+            </ion-icon>
+          </ion-item>
+
+          <ion-menu-toggle auto-hide="false" [hidden]="!isPayRoll">
+            <!-- <ion-item [routerLink]="'employeesalary'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Employee Salary
+                </ion-text>
+              </ion-label>
+            </ion-item> -->
+
+            <ion-item [routerLink]="'payslip'" detail="true" routerLinkActive="selected">
+              <div slot="start">&nbsp;</div>
+              <ion-label style="font-size: small;">
+                <ion-text color="primary">
+                  Pay Slip
+                </ion-text>
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+
+          <ion-menu-toggle>
+
+            <ion-item routerLink="/settings" routerLinkActive="selected" lines="none" detail="true"
+              (click)="isRemainder = false">
+              <ion-icon slot="start" md="settings-sharp"></ion-icon>
+              <ion-label>Settings</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+          <!-- <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+
+        <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

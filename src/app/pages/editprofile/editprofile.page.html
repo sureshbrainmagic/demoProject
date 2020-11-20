@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-2">
+    <form [formGroup]="validationsForm">
+
+      <ion-item>
+        <ion-label position="floating">First Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="FirstName" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Last Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="LastName" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="email" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Gender</ion-label>
+          <ion-select value="Male"  placeholder="Select Gender">
+            <ion-select-option value="Male">Male</ion-select-option>
+            <ion-select-option value="Female">Female</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date of Birth</ion-label>
+        <ion-datetime display-format="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+      
+      <div class="pt-2">
+        <ion-button expand="full" color="primary" type="submit" [disabled]="validationsForm.invalid">
+          Update
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
